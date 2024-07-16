@@ -1,9 +1,8 @@
 <template>
   <div>
     <h1>Computed</h1>
-    <input type="text" v-model="text" placeholder="item name" />
-    <button v-if="text != ''" @click="addItem">add item</button>
-    <button v-else disabled>type item name</button>
+    <input type="text" v-model="itemName" placeholder="item name" />
+    <button :disabled="!itemName" @click="addItem">{{ itemBtnMsg }}</button>
     <table>
       <tr v-for="item in filterItems" :key="item.id">
         <td><input type="checkbox" v-model="item.seleted" /></td>
@@ -12,7 +11,7 @@
       </tr>
     </table>
     <button @click="hideSeleted = !hideSeleted">
-      {{ hideSeleted ? 'show all' : 'hide seleted' }}
+      {{ hideBtnMsg }}
     </button>
   </div>
 </template>
@@ -22,9 +21,16 @@ import { ref, computed } from 'vue';
 
 let id = 0;
 
-const text = ref('new item');
+const itemName = ref('new item');
+
+const itemBtnMsg = computed(() => {
+  return itemName.value ? 'add item' : 'type item name';
+});
 
 const hideSeleted = ref(false);
+const hideBtnMsg = computed(() => {
+  return hideSeleted.value ? 'show all' : 'hide seleted';
+});
 
 const items = ref([
   { id: id++, name: 'apple', seleted: true },
@@ -37,7 +43,7 @@ const filterItems = computed(() => {
 });
 
 function addItem() {
-  items.value.push({ id: id++, name: text.value, seleted: false });
+  items.value.push({ id: id++, name: itemName.value, seleted: false });
 }
 
 function removeItem(item) {

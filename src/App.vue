@@ -11,7 +11,9 @@ const pages = ref(['ref', 'bind', 'event', 'vfor', 'computed', 'component']);
 watch(
   () => destination.value,
   () => {
-    router.push(destination.value);
+    if (destination.value) {
+      router.push(destination.value);
+    }
   }
 );
 </script>
@@ -21,7 +23,9 @@ watch(
     <div>
       <nav>
         <ul>
-          <li><RouterLink to="/">Home</RouterLink></li>
+          <li>
+            <button @click="destination = ''"><RouterLink to="/">Home</RouterLink></button>
+          </li>
           <li>
             <select v-model="destination">
               <option v-for="pageName in pages" :key="pageName" :value="pageName">
