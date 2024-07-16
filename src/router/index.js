@@ -5,6 +5,7 @@ import BindView from '@/views/BindView.vue';
 import OnClickView from '@/views/OnClickView.vue';
 import VforView from '@/views/VforView.vue';
 import ComputedView from '@/views/ComputedView.vue';
+import CompView from '@/views/CompView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/computed',
       name: 'computed',
       component: ComputedView
+    },
+    {
+      path: '/component',
+      name: 'component',
+      component: CompView
     }
   ]
 });

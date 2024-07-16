@@ -6,7 +6,7 @@ const router = useRouter();
 
 const destination = ref('');
 
-const pages = ref(['ref', 'bind', 'event', 'vfor', 'computed']);
+const pages = ref(['ref', 'bind', 'event', 'vfor', 'computed', 'component']);
 
 watch(
   () => destination.value,
@@ -33,7 +33,6 @@ watch(
       </nav>
     </div>
   </header>
-
   <RouterView />
 </template>
 
