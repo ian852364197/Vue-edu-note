@@ -2,9 +2,7 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <button class="btn navbar-brand">
-          <RouterLink to="/">Home</RouterLink>
-        </button>
+        <RouterLink class="navbar-brand" to="/">Home</RouterLink>
         <button
           class="navbar-toggler"
           type="button"
@@ -19,9 +17,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item" v-for="pageName in pages" :key="pageName">
-              <button class="btn nav-item">
-                <RouterLink :to="pageName">{{ pageName }}</RouterLink>
-              </button>
+              <RouterLink class="nav-item" :to="pageName"
+                ><button class="btn nav-item">
+                  {{ pageName }}
+                </button>
+              </RouterLink>
             </li>
           </ul>
         </div>
